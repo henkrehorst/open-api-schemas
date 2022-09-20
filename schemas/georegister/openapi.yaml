@@ -1,0 +1,120 @@
+openapi: 3.0.0
+info:
+  title: georegister
+  version: 1.0.0
+servers:
+  - url: https://geodata.nationaalgeoregister.nl
+paths:
+  /locatieserver/v3/free:
+    get:
+      tags:
+        - default
+      summary: lookup
+      parameters:
+        - name: fq
+          in: query
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+          example: ["postcode:3032AD", "huisntl=41"]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+
+
+
+components:
+  schemas:
+    Response:
+      type: object
+      properties:
+        numFound: 
+          type: integer
+          format: int32
+        start: 
+          type: integer
+          format: int32
+        maxScore: 
+          type: number
+        docs: 
+          type: array
+          items: 
+            type: object
+            properties: 
+              bron: 
+                type: string
+              woonplaatscode: 
+                type: string
+              type: 
+                type: string
+              woonplaatsnaam: 
+                type: string
+              wijkcode: 
+                type: string
+              huis_nlt: 
+                type: string
+              openbareruimtetype: 
+                type: string
+              buurtnaam: 
+                type: string
+              gemeentecode: 
+                type: string
+              rdf_seealso: 
+                type: string
+              weergavenaam: 
+                type: string
+              straatnaam_verkort: 
+                type: string
+              id: 
+                type: string
+              gekoppeld_perceel: 
+                type: array
+                items: 
+                  type: string
+              gemeentenaam: 
+                type: string
+              buurtcode: 
+                type: string
+              wijknaam: 
+                type: string
+              identificatie: 
+                type: string
+              openbareruimte_id: 
+                type: string
+              waterschapsnaam: 
+                type: string
+              provinciecode: 
+                type: string
+              postcode: 
+                type: string
+              provincienaam: 
+                type: string
+              centroide_ll: 
+                type: string
+              nummeraanduiding_id: 
+                type: string
+              waterschapscode: 
+                type: string
+              adresseerbaarobject_id: 
+                type: string
+              huisnummer: 
+                type: integer
+                format: int32
+              provincieafkorting: 
+                type: string
+              centroide_rd: 
+                type: string
+              straatnaam: 
+                type: string
+              gekoppeld_appartement: 
+                type: array
+                items: 
+                  type: string
+              score: 
+                type: number
